@@ -1,0 +1,24 @@
+# Secrets
+.env
+.env.local
+.env*.local
+
+# Internal project docs (business strategy, pricing details, legal drafts)
+CLAUDE.md
+/docs/internal/
+
+# Next.js
+/.next/
+/out/
+next-env.d.ts
+
+# Dependencies
+/node_modules
+
+# Vercel
+.vercel
+
+# Misc
+.DS_Store
+*.log
+.vscode/.server-controller-port.log
