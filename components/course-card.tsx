@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { formatPrice } from "@/lib/format";
+import { formatGroupSize, formatPrice, formatSessionCount } from "@/lib/format";
 import { urlFor } from "@/sanity/lib/image";
 import { courseTypeLabel, type CourseListItem } from "@/sanity/lib/queries";
 
@@ -60,14 +60,14 @@ export function CourseCard({ course }: { course: CourseListItem }) {
           <div>
             <dt className="sr-only">Umfang</dt>
             <dd>
-              {course.numberOfSessions} Termine · je{" "}
+              {formatSessionCount(course.numberOfSessions)} · je{" "}
               {course.sessionDurationMinutes} Min.
             </dd>
           </div>
           <div>
             <dt className="sr-only">Gruppengröße</dt>
             <dd>
-              {course.minParticipants}–{course.maxParticipants} Familien
+              {formatGroupSize(course.minParticipants, course.maxParticipants)}
             </dd>
           </div>
         </dl>

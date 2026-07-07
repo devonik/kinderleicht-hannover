@@ -7,9 +7,24 @@ const priceFormatter = new Intl.NumberFormat("de-DE", {
   maximumFractionDigits: 2,
 });
 
-/** z. B. 150 → „150 €“. */
+/** z. B. 150 → „150 €“; 0 → „Kostenlos“. */
 export function formatPrice(value: number): string {
+  if (value === 0) return "Kostenlos";
   return priceFormatter.format(value);
+}
+
+/** Anzahl Termine mit korrektem Singular/Plural, z. B. „1 Termin“ / „8 Termine“. */
+export function formatSessionCount(count: number): string {
+  return `${count} ${count === 1 ? "Termin" : "Termine"}`;
+}
+
+/**
+ * Gruppengröße als Text. Bei maximal einer Familie handelt es sich um einen
+ * Einzeltermin, sonst „min–max Familien“.
+ */
+export function formatGroupSize(min: number, max: number): string {
+  if (max <= 1) return "Einzeltermin";
+  return `${min}–${max} Familien`;
 }
 
 const dateFormatter = new Intl.DateTimeFormat("de-DE", {

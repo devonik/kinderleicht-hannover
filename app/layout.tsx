@@ -3,6 +3,10 @@ import type { Metadata } from "next";
 import { Cormorant_Garamond, DM_Sans } from "next/font/google";
 import "./globals.css";
 
+import { SiteFooter } from "@/components/site-footer";
+import { SiteHeader } from "@/components/site-header";
+import { isSiteLive } from "@/lib/site";
+
 // Überschriften: Cormorant Garamond
 const cormorant = Cormorant_Garamond({
   variable: "--font-cormorant",
@@ -35,7 +39,9 @@ export default function RootLayout({
       className={`${cormorant.variable} ${dmSans.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        {isSiteLive ? <SiteHeader /> : null}
         {children}
+        {isSiteLive ? <SiteFooter /> : null}
         <Analytics />
       </body>
     </html>
