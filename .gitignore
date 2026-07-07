@@ -43,3 +43,6 @@ CLAUDE.md
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Lokaler Foto-Pool (Quelle für Sanity-Uploads, nicht committen)
+/asset-library/

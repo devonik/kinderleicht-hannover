@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 
 import { LogoMark } from "@/components/logo";
@@ -67,6 +68,18 @@ export default function ComingSoonPage() {
         >
           Schreib uns
         </a>
+      </div>
+
+      {/* Stimmungsbild (statisches Layout-Bild aus public/assets) */}
+      <div className="relative mt-14 aspect-video w-full max-w-2xl overflow-hidden rounded-3xl shadow-sm">
+        <Image
+          src="/assets/home-hero.webp"
+          alt="Kursleiterin und lachendes Baby am Pikler-Dreieck im Kinderleicht-Kursraum"
+          fill
+          priority
+          sizes="(min-width: 768px) 42rem, 100vw"
+          className="object-cover"
+        />
       </div>
 
       <footer className="relative mt-16 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-xs text-anthracite/50">

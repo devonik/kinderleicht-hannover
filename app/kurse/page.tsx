@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 
 import { CourseCard } from "@/components/course-card";
@@ -36,6 +37,18 @@ export default async function KursePage() {
           in Präsenz in Hannover. Wähle einen Kurs für alle Details und Termine.
         </p>
       </header>
+
+      {/* Stimmungsbild der Kursgruppe (statisches Layout-Bild) */}
+      <div className="relative mt-10 aspect-video w-full overflow-hidden rounded-3xl bg-sand shadow-sm">
+        <Image
+          src="/assets/kurse-header.webp"
+          alt="Kursleiterin mit Eltern und Babys in einer Kursrunde bei Kinderleicht"
+          fill
+          priority
+          sizes="(min-width: 1024px) 64rem, 100vw"
+          className="object-cover"
+        />
+      </div>
 
       {courses.length > 0 ? (
         <ul className="mt-14 grid gap-6 sm:grid-cols-2">

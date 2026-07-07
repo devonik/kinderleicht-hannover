@@ -29,6 +29,23 @@ export const courseType = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      // GENERISCH: Hero-/Titelbild des Kurses (Kursübersicht-Karte + Detailseite).
+      // Kursgebundene Bilder liegen bewusst in Sanity (Charly kann sie pro Kurs tauschen).
+      name: "heroImage",
+      title: "Titelbild",
+      type: "image",
+      options: { hotspot: true },
+      fields: [
+        defineField({
+          name: "alt",
+          title: "Alt-Text (Bildbeschreibung)",
+          type: "string",
+          description:
+            "Kurze Beschreibung für Screenreader/SEO, z. B. „Baby greift nach einer Holzrassel“.",
+        }),
+      ],
+    }),
+    defineField({
       // GENERISCH: Rich Text für die Kursdetailseite.
       name: "description",
       title: "Beschreibung",
