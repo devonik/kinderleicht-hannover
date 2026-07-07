@@ -113,7 +113,11 @@ export default async function CourseDetailPage({
         />
         <Fact
           label="Gruppe"
-          value={`${course.minParticipants}–${course.maxParticipants} Fam.`}
+          value={
+            course.maxParticipants <= 1
+              ? "Einzeltermin"
+              : `${course.minParticipants}–${course.maxParticipants} Fam.`
+          }
         />
       </dl>
 
@@ -156,11 +160,13 @@ export default async function CourseDetailPage({
             geplanten Kursstart.
           </p>
         )}
-        <p className="mt-3 text-sm text-anthracite/60">
-          Der Kurs findet ab {course.minParticipants} Familien statt. Wird die
-          Mindestzahl nicht erreicht, kann er abgesagt oder mit einem anderen
-          Kurs zusammengelegt werden.
-        </p>
+        {course.minParticipants > 1 && course.maxParticipants > 1 ? (
+          <p className="mt-3 text-sm text-anthracite/60">
+            Der Kurs findet ab {course.minParticipants} Familien statt. Wird die
+            Mindestzahl nicht erreicht, kann er abgesagt oder mit einem anderen
+            Kurs zusammengelegt werden.
+          </p>
+        ) : null}
       </section>
 
       {/* Stornoregeln */}
