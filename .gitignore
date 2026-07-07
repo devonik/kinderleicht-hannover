@@ -36,6 +36,10 @@ yarn-error.log*
 # vercel
 .vercel
 
+# internal project docs (business strategy, pricing details, legal drafts)
+CLAUDE.md
+/docs/internal/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

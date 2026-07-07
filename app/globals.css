@@ -1,26 +1,27 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/*
+ * Kinderleicht Design-Fundament (Farben & Schriften laut CLAUDE.md).
+ * Tailwind v4: Tokens im @theme erzeugen automatisch Utilities, z. B.
+ * --color-sage -> bg-sage / text-sage / border-sage.
+ */
+@theme {
+  /* Markenfarben */
+  --color-sage: #8faf9b; /* Salbeigrün – Primärfarbe */
+  --color-eucalyptus: #5f7f6b; /* Dunkles Eukalyptusgrün – Buttons/Hervorhebungen */
+  --color-cream: #f8f5ef; /* Warmes Creme – Hintergrund */
+  --color-sand: #e8ddd0; /* Sand/Beige – Flächen */
+  --color-sky: #a9c9d8; /* Zartes Himmelblau – dezente Akzente */
+  --color-anthracite: #3f4342; /* Anthrazit – Text */
+  --color-terracotta: #d89a7b; /* Terracotta – optionaler Akzent */
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* Schriften (in layout.tsx via next/font geladen) */
+  --font-sans: var(--font-dm-sans); /* Fließtext: DM Sans */
+  --font-serif: var(--font-cormorant); /* Überschriften: Cormorant Garamond */
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-cream);
+  color: var(--color-anthracite);
+  font-family: var(--font-sans), system-ui, sans-serif;
 }
