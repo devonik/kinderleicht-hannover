@@ -174,21 +174,31 @@ export default async function CourseDetailPage({
         <CancellationSummary policy={course.cancellationPolicy} />
       ) : null}
 
-      {/* Buchungs-CTA – der eigentliche Online-Buchungsflow (Stripe) folgt später. */}
+      {/* Buchungs-CTA – führt zum Formular-Gerüst; Zahlung (Stripe) folgt später. */}
       <section className="mt-12 rounded-3xl bg-eucalyptus px-7 py-9 text-center text-cream">
-        <h2 className="font-serif text-2xl font-medium">Interesse an diesem Kurs?</h2>
+        <h2 className="font-serif text-2xl font-medium">
+          Interesse an diesem Kurs?
+        </h2>
         <p className="mx-auto mt-3 max-w-md text-cream/85">
-          Die direkte Online-Buchung ist in Kürze verfügbar. Bis dahin erreichst
-          du uns jederzeit per E-Mail.
+          Trage deine Angaben ein und sichere dir deinen Platz. Alternativ
+          erreichst du uns jederzeit per E-Mail.
         </p>
-        <a
-          href={`mailto:info@kinderleicht-hannover.de?subject=${encodeURIComponent(
-            `Anfrage: ${course.title}`,
-          )}`}
-          className="mt-6 inline-flex items-center justify-center rounded-full bg-cream px-7 py-3 text-sm font-medium text-eucalyptus transition-colors hover:bg-sand"
-        >
-          Kurs anfragen
-        </a>
+        <div className="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-3">
+          <Link
+            href={`/kurse/${course.slug}/buchen`}
+            className="inline-flex items-center justify-center rounded-full bg-cream px-7 py-3 text-sm font-medium text-eucalyptus transition-colors hover:bg-sand"
+          >
+            Zur Buchung
+          </Link>
+          <a
+            href={`mailto:info@kinderleicht-hannover.de?subject=${encodeURIComponent(
+              `Anfrage: ${course.title}`,
+            )}`}
+            className="text-sm font-medium text-cream/90 underline underline-offset-2 hover:text-cream"
+          >
+            Lieber per E-Mail anfragen
+          </a>
+        </div>
       </section>
     </main>
   );
