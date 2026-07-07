@@ -1,6 +1,10 @@
+import type { SanityImageSource } from "@sanity/image-url";
 import type { PortableTextBlock } from "next-sanity";
 
 import { client } from "./client";
+
+/** Sanity-Bild mit optionalem Alt-Text (z. B. Kurs-Titelbild). */
+export type SanityImage = SanityImageSource & { alt?: string | null };
 
 /**
  * GROQ-Queries + TS-Typen für die öffentliche Kurs-Darstellung (Übersicht + Detail).
@@ -53,6 +57,7 @@ export type CourseListItem = {
   minParticipants: number;
   fotoVideoErlaubt: boolean;
   excerpt: string;
+  heroImage: SanityImage | null;
 };
 
 /** Volle Daten für die Kursdetailseite. */
@@ -73,7 +78,8 @@ const COURSE_CARD_FIELDS = /* groq */ `
   maxParticipants,
   minParticipants,
   "fotoVideoErlaubt": coalesce(fotoVideoErlaubt, true),
-  "excerpt": pt::text(description)
+  "excerpt": pt::text(description),
+  heroImage
 `;
 
 const COURSES_QUERY = /* groq */ `

@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { CourseDescription } from "@/components/portable-text";
 import { formatDate, formatPrice, formatTime } from "@/lib/format";
+import { urlFor } from "@/sanity/lib/image";
 import {
   courseTypeLabel,
   getCourseBySlug,
@@ -68,7 +70,25 @@ export default async function CourseDetailPage({
         &larr; Alle Kurse
       </Link>
 
-      <header className="mt-6">
+      {course.heroImage ? (
+        <div className="relative mt-6 aspect-video w-full overflow-hidden rounded-3xl bg-sand">
+          <Image
+            src={urlFor(course.heroImage)
+              .width(1280)
+              .height(720)
+              .fit("crop")
+              .auto("format")
+              .url()}
+            alt={course.heroImage.alt ?? course.title}
+            fill
+            priority
+            sizes="(min-width: 768px) 768px, 100vw"
+            className="object-cover"
+          />
+        </div>
+      ) : null}
+
+      <header className="mt-8">
         <p className="text-xs font-medium tracking-[0.2em] text-sage uppercase">
           {courseTypeLabel(course.courseType)}
         </p>
