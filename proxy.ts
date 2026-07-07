@@ -64,6 +64,8 @@ function checkPreviewAuth(request: NextRequest): NextResponse | null {
 }
 
 export const config = {
-  // Statische Next-Assets ausnehmen (kein sensibler Inhalt).
-  matcher: ["/((?!_next/static|_next/image|favicon.ico|icon.svg).*)"],
+  // Skip static assets. `/assets` (public images) must be excluded too: otherwise the
+  // coming-soon redirect also catches the image source that next/image fetches, which breaks
+  // image optimization on Vercel (the optimizer fetches the source over HTTP).
+  matcher: ["/((?!_next/static|_next/image|assets|favicon.ico|icon.svg).*)"],
 };
